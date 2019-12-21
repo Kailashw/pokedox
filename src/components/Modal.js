@@ -34,7 +34,7 @@ export default function SimpleModal({ categories, save }) {
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
-    const [categoryName, setcategoryName] = React.useState("")
+    const [name, setcategoryName] = React.useState("")
     const [categoryId, setcategoryId] = React.useState(null)
 
     const handleOpen = () => {
@@ -47,7 +47,7 @@ export default function SimpleModal({ categories, save }) {
 
     const formSubmit = () => {
         let res = {
-            categoryName: categoryName,
+            name: name,
             categoryId: categoryId
         }
         save(res)
@@ -74,17 +74,17 @@ export default function SimpleModal({ categories, save }) {
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             value={categoryId}
-                            onChange={(e)=> setcategoryId(e.target.id)}
-                        > 
-                        {
+                            onChange={(e) => setcategoryId(e.target.id)}
+                        >
+                            {
                                 categories.length > 0 &&
-                                categories.map(el => <MenuItem value={el.id}>{el.label}</MenuItem>)
+                                categories.map(el => <MenuItem value={el.id}>{el.name}</MenuItem>)
                             }
                         </Select>
                         <p id="simple-modal-description">
                             Create a new Categories
                     </p>
-                        <TextField value={categoryName} onChange={(e) => setcategoryName(e.target.value)} id="standard-basic" label="Standard" />
+                        <TextField value={name} onChange={(e) => setcategoryName(e.target.value)} id="standard-basic" label="Standard" />
                         <Button type="submit" variant="contained" color="primary"> Save </Button>
                     </form>
                 </div>

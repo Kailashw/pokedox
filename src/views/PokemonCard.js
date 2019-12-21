@@ -7,13 +7,15 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
+        margin : "10px"
     },
     paper: {
         padding: theme.spacing(2),
         margin: "auto",
         maxWidth: "80%",
-        borderColor:"black"
+        borderColor: "black",
+        border:"groove"
     },
     image: {
         width: 128,
@@ -31,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function Card({ item }) {
+export default function PokemonCard({ item }) {
     const classes = useStyles();
     return (
         <div className={classes.root}>
