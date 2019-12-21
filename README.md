@@ -41,8 +41,9 @@ I have used @material-ui/core for speed development of UI components.
 
 - [x] Publish code to FireBase.
 - [x] Update readme file.
-- [ ] Create/Delete Category operation in DB.
-- [ ] Move items to Respective Category after Create Category.
+- [x] Create/Delete Category operation in DB.
+- [x] Move items to Respective Category after Create Category.
+- [ ] add to Existing category.
 - [ ] Save button on re-rdering. 
 - [ ] Retrive them in saved order.
-- [ ] Break Card component in to draggable only and checkable only cards.
+- [x] Break Card component in to draggable only and checkable only cards.
