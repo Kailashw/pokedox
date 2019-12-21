@@ -5,12 +5,14 @@ import { fetchPokemons, fetchCategory, fetchCategories, deleteCategoryDetail, ad
 import PokemonCard from "../views/PokemonCard";
 import { Button } from "@material-ui/core";
 import AllPokemons from "./AllPokemons";
+import CategoryPokemons from "./CategoryPokemons";
 
 class App extends React.Component {
   constructor(props) {
     super()
     this.state = {
-      categoryId: 0
+      categoryId: 0,
+      flush : false
     }
   }
 
@@ -22,18 +24,21 @@ class App extends React.Component {
   onTabChange = (id) => {
     this.setState({ categoryId: id })
     this.props.fetchCategory(id)
+    this.setState({ flush : true })
   }
 
   deleteTab = (id) => {
-    console.log(id)
     this.props.deleteCategoryDetail(id)
     this.onTabChange(0)
   }
 
+  updateFlush = ()=>{
+    this.setState({flush :false})
+  }
+
   render() {
     const { pokemons, categories } = this.props
-    const { categoryId } = this.state
-
+    const { categoryId, flush } = this.state
     return (
       <div style={{ backgroundColor: "yellow" }}>
         <h1 style={{ textAlign: "center" }}> Pokedox </h1>
@@ -58,9 +63,7 @@ class App extends React.Component {
             {/** Other Pokemons from 'different' Category goes here */}
             {
               parseInt(categoryId) !== 0 &&
-              pokemons.map(el => {
-                return <PokemonCard item={el} />
-              })
+              <CategoryPokemons updateFlush={this.updateFlush} flush={flush} pokemons={pokemons} onTabChange={this.onTabChange}/>
             }
           </div>
         </div>

@@ -14,10 +14,6 @@ class AllPokemons extends React.Component {
         }
     }
 
-    componentDidMount() {
-
-    }
-
     handleCheckbox(e) {
         const item = parseInt(e.target.id);
         const isChecked = e.target.checked;
@@ -41,6 +37,7 @@ class AllPokemons extends React.Component {
         this.props.addNewCategory(res)
         this.setState({ checkedItems : [] })
         this.props.onTabChange(0)
+        this.props.fetchCategories()
     }
 
     render() {

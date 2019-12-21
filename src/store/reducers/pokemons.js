@@ -17,28 +17,23 @@ export default function (state = initialState, action) {
       if (parseInt(action.payload) === 0) {
         return { ...state, pokemons: state.allPokemons };
       } else {
-        let category = state.categories[action.payload].pokeIds
+        let pokeIds = state.categories.find(el=> el.id === String(action.payload)).pokeIds
         let res = []
-        for (let i = 0; i < category.length; i++) {
-          let obj = state.pokemons.find(el => el.id == category[i])
+        for (let i = 0; i < pokeIds.length; i++) {
+          let obj = state.allPokemons.find(el => el.id === parseInt(pokeIds[i]))
           res.push(obj)
         }
         return { ...state, pokemons: res };
       }
 
     case types.DELETE_CATEGORY:
-      // delete the category from redux
       return { ...state, categories: state.categories.filter(el => el.id !== action.payload), pokemons: state.allPokemons };
-    case types.ADD_TO_CATEGORY:
-      // add the cards to categories from redux
-      let res = []
-      state.categories.push(action.payload)
-      for (let i = 0; i < action.payload.pokeIds.length; i++) {
-        let obj = state.pokemons.find(el => el.id === action.payload.pokeIds[i])
-        console.log(obj)
-        res.push(obj)
+    case types.ADD_NEW_CATEGORY:
+      return {
+        ...state,
+        categories: state.categories.concat(action.payload),
+        pokemons: state.allPokemons
       }
-      return { ...state, categories: state.categories, pokemons: res }
     default:
       return state;
   }

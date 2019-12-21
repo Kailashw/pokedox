@@ -75,7 +75,7 @@ export const deleteCategory = ( id )=> {
 
 export const addNewCategoryToRedux = ( payload )=> {
   return {
-      type: types.ADD_TO_CATEGORY,
+      type: types.ADD_NEW_CATEGORY,
       payload: payload
     }
 };
