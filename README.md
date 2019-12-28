@@ -1,4 +1,5 @@
-# Storing Contact Details using React Hooks
+# Pokedox
+## Listing/Sorting/Categorising of pokemons
 
 The purpose of this project is to demonstarte listing, categorizing of pokemons. In this example we will try to build a sample list to fetch pokemons, categorize them based on user interest, reorder them with in category, undo the reorder selection to one level and delete category. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -20,14 +21,26 @@ src
 │   └── logo.svg
 │   └── hamburger.svg
 ├── components
-│   └── card.js
 │   └── Modal.js
 ├── container
-│   └── TabPanel.js
+│   └── AllPokemons.js.js
+│   └── App.js
+│   └── App.css
+│   └── App.test.js
+│   └── CategoryPokemons.js
+├── store
+│   └── store.js
+│   └── actions
+│         └── actionTypes.js
+│         └── index.js
+│   └── reducers
+│         └── index.js
+│         └── pokemons.js.js
+│         └── loading.js
+├── Views
+│   └── PokemonCard.js
 └── index.js
 └── index.css
-└── App.js
-└── App.css
 └── setupTests.js
 └── serviceWorker.js
 ```
